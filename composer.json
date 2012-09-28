@@ -10,6 +10,6 @@
     ],
     "homepage": "http://www.jprumeau.com/",
     "require": {
-        "zendframework/zendframework": "2.0",
+        "zendframework/zendframework": "2.0"
     }
 }
