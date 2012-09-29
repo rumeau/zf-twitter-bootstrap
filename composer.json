@@ -1,9 +1,10 @@
 {
     "name": "rumeau/zf-twitter-bootstrap",
 	"description": "Twitter Bootstrap Implementation on ZF2 Components",
+	"type": "library",
     "license": "BSD-3-Clause",
     "keywords": [
-		"twittwe",
+		"twitter",
 		"bootstrap",
         "framework",
         "zf2"
@@ -17,7 +18,7 @@
             "ZfTwitterBootstrap": "src/"
         },
         "classmap": [
-            "./Module.php"
+            "Module.php"
         ]
     }
 }
