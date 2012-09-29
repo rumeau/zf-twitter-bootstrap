@@ -17,7 +17,7 @@
             "ZfTwitterBootstrap": "src/"
         },
         "classmap": [
-            "./"
+            "./Module.php"
         ]
     }
 }
