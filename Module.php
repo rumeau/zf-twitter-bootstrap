@@ -9,10 +9,6 @@
 
 namespace ZfTwitterBootstrap;
 
-use Zend\ModuleManager\ModuleManager;
-use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
-use Zend\ModuleManager\Feature\ConfigProviderInterface;
-
 /**
  * Module
  * 
@@ -20,9 +16,7 @@ use Zend\ModuleManager\Feature\ConfigProviderInterface;
  * @package   ZfTwitterBootstrap
  * @link      http://www.w3.org/Protocols/rfc2616/rfc2616-sec4.html#sec4
  */
-class Module extends ModuleManager implements
-    AutoloaderProviderInterface,
-    ConfigProviderInterface
+class Module
 {
     public function getAutoloaderConfig()
     {
