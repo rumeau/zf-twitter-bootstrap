@@ -9,6 +9,61 @@ use Zend\Form\Exception;
 class FormButton extends ZendFormButtonHelper
 {
     /**
+     * Generate an opening button tag
+     *
+     * @param  null|array|ElementInterface $attributesOrElement
+     * @return string
+     */
+    public function openTag($attributesOrElement = null)
+    {
+        if (null === $attributesOrElement) {
+            return '<button>';
+        }
+    
+        if (is_array($attributesOrElement)) {
+            if (!array_key_exists('class', $attributesOrElement)) {
+                $attributesOrElement['class'] = 'btn';
+            } else {
+                $attributesOrElement['class'] = 'btn ' . $attributesOrElement['class'];
+            }
+            $attributes = $this->createAttributesString($attributesOrElement);
+            return sprintf('<button %s>', $attributes);
+        }
+    
+        if (!$attributesOrElement instanceof ElementInterface) {
+            throw new Exception\InvalidArgumentException(sprintf(
+                    '%s expects an array or Zend\Form\ElementInterface instance; received "%s"',
+                    __METHOD__,
+                    (is_object($attributesOrElement) ? get_class($attributesOrElement) : gettype($attributesOrElement))
+            ));
+        }
+    
+        $element = $attributesOrElement;
+        $name    = $element->getName();
+        if (empty($name) && $name !== 0) {
+            throw new Exception\DomainException(sprintf(
+                    '%s requires that the element has an assigned name; none discovered',
+                    __METHOD__
+            ));
+        }
+    
+        $attributes          = $element->getAttributes();
+        if (!array_key_exists('class', $attributes)) {
+            $attributes['class'] = 'btn';
+        } else {
+            $attributes['class'] = 'btn ' . $attributes['class'];
+        }
+        $attributes['name']  = $name;
+        $attributes['type']  = $this->getType($element);
+        $attributes['value'] = $element->getValue();
+    
+        return sprintf(
+                '<button %s>',
+                $this->createAttributesString($attributes)
+        );
+    }
+    
+    /**
      * Render a form <button> element from the provided $element,
      * using content from $buttonContent or the element's "label" attribute
      *
