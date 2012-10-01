@@ -26,8 +26,11 @@ return array(
             'zftwbformrow'  => 'ZfTwitterBootstrap\Form\View\Helper\FormRow',
             'zftwbformactions'  => 'ZfTwitterBootstrap\Form\View\Helper\FormActions',
             'zftwbformsearch' => 'ZfTwitterBootstrap\Form\View\Helper\FormSearch',
+            'zftwbformsubmit' => 'ZfTwitterBootstrap\Form\View\Helper\FormSubmit',
             'zftwbformtext' => 'ZfTwitterBootstrap\Form\View\Helper\FormText',
             'zftwbformtextarea' => 'ZfTwitterBootstrap\Form\View\Helper\FormTextarea',
+            'zftwbformnote' => 'ZfTwitterBootstrap\Form\View\Helper\FormNote',
+            'zftwbformlinkbutton' => 'ZfTwitterBootstrap\Form\View\Helper\FormLinkButton',
                 
             /**
              * Uncomment the lines below to override default Zend Form components
@@ -43,8 +46,11 @@ return array(
             'formrow'  => 'ZfTwitterBootstrap\Form\View\Helper\FormRow',
             'formactions'  => 'ZfTwitterBootstrap\Form\View\Helper\FormActions',
             'formsearch' => 'ZfTwitterBootstrap\Form\View\Helper\FormSearch',
+            'formsubmit' => 'ZfTwitterBootstrap\Form\View\Helper\FormSubmit',
             'formtext' => 'ZfTwitterBootstrap\Form\View\Helper\FormText',
             'formtextarea' => 'ZfTwitterBootstrap\Form\View\Helper\FormTextarea',
+            'formnote' => 'ZfTwitterBootstrap\Form\View\Helper\FormNote',
+            'formlinkbutton' => 'ZfTwitterBootstrap\Form\View\Helper\FormLinkButton',
         )     
     )
 );

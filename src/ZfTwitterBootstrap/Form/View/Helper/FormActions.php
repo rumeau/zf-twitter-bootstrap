@@ -2,11 +2,17 @@
 
 namespace ZfTwitterBootstrap\Form\View\Helper;
 
-use ZfTwitterBootstrap\Form\View\Helper\FormRow;
+use ZfTwitterBootstrap\Form\Element;
 use Zend\Form\ElementInterface;
+use Zend\Form\View\Helper\AbstractHelper as BaseAbstractHelper;
 
-class FormActions extends FormRow
+class FormActions extends BaseAbstractHelper
 {
+    /**
+     * @var FormElement
+     */
+    protected $elementHelper;
+    
     /**
      * Utility form helper that renders a form actions container
      *
@@ -21,20 +27,17 @@ class FormActions extends FormRow
         $elementHelper  = $this->getElementHelper();
         
         if (is_array($elements) && count($elements)) {
-            $actionsString = '';
             foreach ($elements as $element) {
                 if (is_string($element)) {
-                    $actionsString .= $element . "\n";
+                    $markup .= $element . "\n";
                 } elseif ($element instanceof ElementInterface) {
-                    $actionsString .= $elementHelper->render($element) . "\n";
+                    $markup .= $elementHelper->render($element) . "\n";
                 }
             }
-            
-            $markup .= $actionsString;
         } elseif (is_string($elements)) {
             $markup .= $elements . "\n";
         } elseif ($elements instanceof ElementInterface) {
-            $actionsString .= $elementHelper->render($element) . "\n";
+            $markup .= $elementHelper->render($element) . "\n";
         }
         
         $markup .= $this->closeTag();
@@ -85,5 +88,27 @@ class FormActions extends FormRow
         }
     
         return $this->render($actions);
+    }
+    
+    /**
+     * Retrieve the FormElement helper
+     *
+     * @return FormElement
+     */
+    protected function getElementHelper()
+    {
+        if ($this->elementHelper) {
+            return $this->elementHelper;
+        }
+    
+        if (method_exists($this->view, 'plugin')) {
+            $this->elementHelper = $this->view->plugin('form_element');
+        }
+    
+        if (!$this->elementHelper instanceof FormElement) {
+            $this->elementHelper = new FormElement();
+        }
+    
+        return $this->elementHelper;
     }
 }
