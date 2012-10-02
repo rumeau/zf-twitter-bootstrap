@@ -2,9 +2,10 @@
 
 namespace ZfTwitterBootstrap\Form\View\Helper;
 
+use ZfTwitterBootstrap\Form\Element\Select as SelectElement;
 use Zend\Form\View\Helper\FormSelect as ZendFormSelectHelper;
 use Zend\Form\Element\Select as ZendSelectElement;
-use ZfTwitterBootstrap\Form\Element\Select as SelectElement;
+use Zend\Form\ElementInterface;
 use Zend\Form\Exception;
 
 class FormSelect extends ZendFormSelectHelper
